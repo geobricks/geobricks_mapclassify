@@ -1,0 +1,4 @@
+*.iml
+/GeobricksGISRaster.egg-info/
+/dist/
+/distribution_sld/

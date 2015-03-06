@@ -1,2 +1,2 @@
-# geobricks_mapclassify
-Geobricks module to create thematic maps (SLD).
+# geobricks_gis_vector
+Library to create thematic maps (GeoServer SLD).
