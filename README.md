@@ -1,2 +1,2 @@
-# geobricks_gis_vector
+# Geobricks Map Classify
 Library to create thematic maps (GeoServer SLD).
