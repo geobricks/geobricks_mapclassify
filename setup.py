@@ -11,6 +11,7 @@ setup(
     long_description=open('README.md').read(),
     description='Geobricks .',
     install_requires=[
+        'watchdog',
         'flask',
         'flask-cors',
 	    'numpy',

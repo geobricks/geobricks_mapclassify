@@ -1,13 +1,11 @@
 import json
 import os
 from flask import Blueprint
-from flask import Response
-from flask import request
+from flask import Response, request, send_from_directory
 from flask.ext.cors import cross_origin
 from geobricks_common.core.log import logger
 from geobricks_mapclassify.config.config import config
 from geobricks_mapclassify.core.mapclassify import MapClassify, get_distribution_folder
-from flask import request, send_from_directory
 
 log = logger(__file__)
 
@@ -57,11 +55,13 @@ def get_zip_file(id):
 
 
 
-@app.route('/join', methods=['POST'])
+@app.route('/join/', methods=['POST'])
 @app.route('/join', methods=['POST'])
 @cross_origin(origins='*', headers=['Content-Type'])
 def get_rasters_spatial_query():
     try:
+        log.info("HERE")
+        print request
         user_json = request.get_json()
         log.info(user_json)
         #TODO: handle it nicer the url to set the distribution download url
@@ -71,5 +71,5 @@ def get_rasters_spatial_query():
         result = mapclassify.classify(user_json, distribution_url)
         return Response(json.dumps(result), content_type='application/json; charset=utf-8')
     except Exception, e:
-        raise Exception(e)
+        log.error(e)
 

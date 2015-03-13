@@ -10,7 +10,6 @@ def get_ranges(data):
         print data["ranges"]
         return data["ranges"]
 
-
     # else classification
     else:
         return classify_values(get_data_values(data), data["intervals"], data["classification_type"])

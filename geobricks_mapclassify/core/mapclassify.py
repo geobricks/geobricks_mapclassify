@@ -14,6 +14,9 @@ log = logger(__file__)
 
 # TODO: move it from here (move it in config?)
 default_obj = {
+
+   # oltre alla scala quantistics servirebbe qualcosa qualitativa (i.e. [{"1"; "bad"}]
+
     "intervals": 5,
     "colorramp": "Reds",
     "colortype": None, #Sequential, Diverging, Qualitative
@@ -49,14 +52,14 @@ class MapClassify():
 
         # Get Ranges
         ranges = get_ranges(data)
-        log.info("ranges:" + str(ranges))
+        log.info("Ranges: " + str(ranges))
         data["intervals"] = len(ranges)
-        log.info("intervals:" + str(data["intervals"]))
+        log.info("Intervals: " + str(data["intervals"]))
 
         # Get Colors
         # # TODO: get colors based on real generated intervals
         colors = get_colors(data, data["intervals"])
-        log.info("colors:" + str(colors))
+        log.info("Colors: " + str(colors))
 
         # check if create shaded or point data
         if data["type"] == "shaded":

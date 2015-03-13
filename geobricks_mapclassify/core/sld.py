@@ -1,26 +1,37 @@
 
 
 def create_sld_xml(data, ranges, colors, labels=None):
+    return create_quantitative_sld(data, ranges, colors, labels)
+
+
+def create_quantitative_sld():
+    return None
+
+
+def create_quantitative_sld(data, ranges, colors, labels=None):
     rules = []
     values = data["data"]
     decimalvalues = data["decimalvalues"]
     join_column = data["join_column"]
+    layers = data["layers"]
 
     # print ranges
 
     for i in xrange(len(ranges)-1):
+        range = round(ranges[i], decimalvalues)
         rules.append({
-            "range": round(ranges[i], decimalvalues),
+            "range": range,
             "color": colors[i],
-            "label": "&lt;= " + str(round(ranges[i], decimalvalues)),
+            "label": "&lt;= " + str(range),
             "codes": []
         })
 
     # last rule is > than the last-1 value
+    range = round(ranges[len(ranges)-2], decimalvalues)
     rules.append({
-        "range": round(ranges[len(ranges)-2], decimalvalues),
+        "range": range,
         "color": colors[len(ranges)-1],
-        "label": "&gt; " + str(round(ranges[len(ranges)-2], decimalvalues)),
+        "label": "&gt; " + str(range),
         "codes": []
     })
 
@@ -39,7 +50,7 @@ def create_sld_xml(data, ranges, colors, labels=None):
 
 
     # crete sld
-    sld = sld_open(data["workspace"], data["layername"])
+    sld = sld_open(layers)
     for i in xrange(len(rules)-1):
         print rules[i]
         sld += sld_create_rule(str(rules[i]["label"]), join_column, rules[i]["codes"], rules[i]["color"])
@@ -54,10 +65,10 @@ def create_sld_xml(data, ranges, colors, labels=None):
     return sld, rules
 
 
-def sld_open(workspace, layername):
+def sld_open(layers):
     sld = '<?xml version="1.0" encoding="UTF-8"?><sld:StyledLayerDescriptor xmlns:sld="http://www.opengis.net/sld" xmlns="http://www.opengis.net/sld" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" version="1.0.0">'
     sld += '<sld:NamedLayer>'
-    sld += '<sld:Name>' + workspace + ':' + layername + '</sld:Name>'
+    sld += '<sld:Name>' + layers + '</sld:Name>'
     sld += '<sld:UserStyle>'
     sld += '<sld:FeatureTypeStyle>'
     return sld

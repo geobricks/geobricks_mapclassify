@@ -47,7 +47,8 @@ class GeobricksTest(unittest.TestCase):
             "join_column": "adm0_code",
 
             # what to set to create or not the sld?
-            "type": "shaded"
+            "type": "shaded",
+            "layers": "fenix:gaul0_2015_4326"
         }
 
         mapclassify = MapClassify(config)
