@@ -1,5 +1,8 @@
 include *.md *.txt *.json
 recursive-include geobricks_mapclassify *
+recursive-exclude geobricks_mapclassify_test *
+recursive-exclude distribution_sld *
+recursive-exclude examples *
 global-exclude *_dev.py
 global-exclude .gitignore
 global-exclude *_test

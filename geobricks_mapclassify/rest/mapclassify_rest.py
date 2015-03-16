@@ -60,8 +60,6 @@ def get_zip_file(id):
 @cross_origin(origins='*', headers=['Content-Type'])
 def get_rasters_spatial_query():
     try:
-        log.info("HERE")
-        print request
         user_json = request.get_json()
         log.info(user_json)
         #TODO: handle it nicer the url to set the distribution download url
