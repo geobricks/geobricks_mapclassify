@@ -25,7 +25,7 @@ def get_data_values(data):
                 d[key] = float(d[key])
             data_values.append(d[key])
 
-    print data_values
+    # print data_values
     # TODO: use unique values? list(set(data_values)) or having double counting values? i.e. in quantile it counts.
     if data["double_counting"]:
         return data_values
@@ -64,7 +64,7 @@ def classify_jenks_caspall_forced(values, intervals):
 
 def classify_natural_breaks(values, intervals):
     result = mapclassify.natural_breaks(values, intervals)
-    print result.bins
+    # print result.bins
     return result
 
 

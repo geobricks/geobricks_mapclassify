@@ -32,8 +32,6 @@ default_obj = {
     "classification_type": "jenks_caspall_forced",
     "join_column": None,
     "data": None, # or join_data?
-    "layername": "layername",
-    "workspace": "workspace",
     "double_counting": False,
     "decimalvalues": 2,
     "type": "shaded"

@@ -13,9 +13,8 @@ def create_quantitative_sld(data, ranges, colors, labels=None):
     values = data["data"]
     decimalvalues = data["decimalvalues"]
     join_column = data["join_column"]
-    layers = data["layers"]
-
-    # print ranges
+    # TODO: if layers not set and "shaded" jointype should throw an error
+    layers = data["layers"] if "layers" in data else ""
 
     for i in xrange(len(ranges)-1):
         range = round(ranges[i], decimalvalues)
@@ -52,16 +51,16 @@ def create_quantitative_sld(data, ranges, colors, labels=None):
     # crete sld
     sld = sld_open(layers)
     for i in xrange(len(rules)-1):
-        print rules[i]
+        # print rules[i]
         sld += sld_create_rule(str(rules[i]["label"]), join_column, rules[i]["codes"], rules[i]["color"])
 
     # last rule is > than the last-1 value
-    print rules[len(rules)-1]
+    # print rules[len(rules)-1]
     sld += sld_create_rule(str(rules[len(rules)-1]["label"]), join_column, rules[len(rules)-1]["codes"], rules[len(rules)-1]["color"])
 
     # close the sld
     sld += sld_close()
-    print sld
+    # print sld
     return sld, rules
 
 
