@@ -1,11 +1,15 @@
+# -- coding: utf-8 --
 import json
 import os
+import urllib2
 from flask import Blueprint
 from flask import Response, request, send_from_directory
 from flask.ext.cors import cross_origin
 from geobricks_common.core.log import logger
 from geobricks_mapclassify.config.config import config
 from geobricks_mapclassify.core.mapclassify import MapClassify, get_distribution_folder
+
+
 
 log = logger(__file__)
 
@@ -68,6 +72,23 @@ def get_rasters_spatial_query():
         mapclassify = MapClassify(config)
         result = mapclassify.classify(user_json, distribution_url)
         return Response(json.dumps(result), content_type='application/json; charset=utf-8')
+    except Exception, e:
+        log.error(e)
+
+
+@app.route('/request/', methods=['GET'])
+@app.route('/request', methods=['GET'])
+@cross_origin(origins='*', headers=['Content-Type'])
+def proxy():
+    try:
+        url = request.args.get('urlWMS')
+        if url is None:
+            raise Exception('Parameter is not set')
+
+        # TODO: add other checks (on all the other parameters)
+        #r = requests.get(url + "?" + request.query_string)
+        r = urllib2.urlopen(url + "?" + request.query_string).read()
+        return Response(r,  content_type='text/plain; charset=utf-8')
     except Exception, e:
         log.error(e)
 
