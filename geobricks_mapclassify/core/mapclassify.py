@@ -29,12 +29,12 @@ default_obj = {
         "label": "No Data Value",
         "position": "on top"
     },
-    "classification_type": "jenks_caspall_forced",
-    "join_column": None,
-    "data": None, # or join_data?
-    "double_counting": False,
+    "classificationtype": "jenks_caspall_forced",
+    "joincolumn": None,
+    "joindata": None, # or join_data?
+    "doublecounting": False,
     "decimalvalues": 2,
-    "type": "shaded"
+    "jointype": "shaded"
 }
 
 
@@ -60,14 +60,14 @@ class MapClassify():
         log.info("Colors: " + str(colors))
 
         # check if create shaded or point data
-        if data["type"] == "shaded":
+        if data["jointype"] == "shaded":
             return self.classify_sld(data, ranges, colors, distribution_url, distribution_folder)
-        elif data["type"] == "point":
+        elif data["jointype"] == "point":
             # TODO: move it from here (and maybe also move it from sld creation (so it won't create a file)
             sld, legend = create_sld_xml(data, ranges, colors)
             return {"legend": legend}
         else:
-            raise Exception('Classification "type":"' + data["type"] + '" not supported.')
+            raise Exception('Classification "type":"' + data["jointype"] + '" not supported.')
 
     def classify_sld(self, data, ranges, colors, distribution_url=None, distribution_folder=None):
         distribution_folder = get_distribution_folder(self.config, distribution_folder)
@@ -82,9 +82,7 @@ class MapClassify():
             return path
         else:
             url = distribution_url + filename
-
         return {"url": url, "legend": legend}
-
 
 def _create_sld(distribution_folder, sld, extension=".sld"):
     # get the distribution folder

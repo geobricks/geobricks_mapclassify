@@ -10,9 +10,9 @@ def create_quantitative_sld():
 
 def create_quantitative_sld(data, ranges, colors, labels=None):
     rules = []
-    values = data["data"]
+    values = data["joindata"]
     decimalvalues = data["decimalvalues"]
-    join_column = data["join_column"]
+    join_column = data["joincolumn"]
     # TODO: if layers not set and "shaded" jointype should throw an error
     layers = data["layers"] if "layers" in data else ""
 

@@ -12,14 +12,13 @@ def get_ranges(data):
 
     # else classification
     else:
-        return classify_values(get_data_values(data), data["intervals"], data["classification_type"])
+        return classify_values(get_data_values(data), data["intervals"], data["classificationtype"])
 
 
 def get_data_values(data):
     data_values = []
     # return None if "data" not in data else data["data"]
-    print data["data"]
-    for d in data["data"]:
+    for d in data["joindata"]:
         for key in d:
             if isinstance(d[key], basestring):
                 d[key] = float(d[key])
@@ -27,7 +26,7 @@ def get_data_values(data):
 
     # print data_values
     # TODO: use unique values? list(set(data_values)) or having double counting values? i.e. in quantile it counts.
-    if data["double_counting"]:
+    if "doublecounting" in data and data["doublecounting"]:
         return data_values
     else:
         return list(set(data_values))

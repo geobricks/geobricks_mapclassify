@@ -71,6 +71,7 @@ def get_rasters_spatial_query():
         distribution_url = request.host_url + base_url + "mapclassify/download/sld/"
         mapclassify = MapClassify(config)
         result = mapclassify.classify(user_json, distribution_url)
+        print result
         return Response(json.dumps(result), content_type='application/json; charset=utf-8')
     except Exception, e:
         log.error(e)
