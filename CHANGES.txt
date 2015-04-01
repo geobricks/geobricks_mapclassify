@@ -2,3 +2,4 @@ v0.0.1, 06-03-2015 -- Initial release.
 v0.0.3, 16-03-2015 -- Initial release.
 v0.0.4, 17-03-2015 -- Initial release.
 v0.0.5, 17-03-2015 -- Initial release.
+v0.0.6, 01-04-2015 -- Initial release.
