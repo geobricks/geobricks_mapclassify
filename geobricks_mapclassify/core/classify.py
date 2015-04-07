@@ -7,7 +7,6 @@ def get_ranges(data):
     if "ranges" in data and data["ranges"] is not None:
         # adding another fake range step to the array
         data["ranges"].append(data["ranges"][len(data["ranges"])-1])
-        print data["ranges"]
         return data["ranges"]
 
     # else classification
