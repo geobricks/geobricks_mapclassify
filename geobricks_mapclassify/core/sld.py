@@ -100,6 +100,11 @@ def sld_add_title(title):
 
 def sld_add_filter(join_column, codes):
     sld = "<ogc:Filter>"
+
+    # TODO: fix it workaround for SLD
+    if len(codes) == 0:
+        sld += sld_add_property('PropertyIsEqualTo', join_column, "-9999999")
+
     if len(codes) > 1:
         sld += '<ogc:Or>'
 
