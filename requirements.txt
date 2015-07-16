@@ -1,0 +1,7 @@
+watchdog
+flask
+flask-cors
+brewer2mpl
+numpy
+scipy
+https://github.com/geobricks/geobricks_common/archive/development.zip

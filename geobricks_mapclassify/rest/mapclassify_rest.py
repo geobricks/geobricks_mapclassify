@@ -10,11 +10,9 @@ from geobricks_mapclassify.config.config import config
 from geobricks_mapclassify.core.mapclassify import MapClassify, get_distribution_folder
 
 
-
 log = logger(__file__)
 
 app = Blueprint("classification_sld", "classification_sld")
-
 
 @app.route('/')
 @cross_origin(origins='*')

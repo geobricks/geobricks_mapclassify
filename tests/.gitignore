@@ -1,0 +1,3 @@
+*.pyc
+/distribution_sld/
+/__pycache__/

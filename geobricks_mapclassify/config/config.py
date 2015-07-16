@@ -23,9 +23,8 @@ config = {
         },
 
         "folders": {
-
             # dynamic sld
-            "distribution_sld": "/home/vortex/repos/FENIX-MAPS/geobricks/geobricks_sld/distribution_sld/",
+            "distribution_sld": "distribution_sld/",
         }
     }
 }
