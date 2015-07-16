@@ -4,4 +4,5 @@ flask-cors
 brewer2mpl
 numpy
 scipy
+simplejson
 https://github.com/geobricks/geobricks_common/archive/development.zip
